@@ -1,5 +1,6 @@
 ## ASTER  
 `An Attentional Scene Text Recognizer with Flexible Rectification`  
+https://www.researchgate.net/publication/325993414_ASTER_An_Attentional_Scene_Text_Recognizer_with_Flexible_Rectification  
 Задача: распознать слово на изображении (изображение предварительно вырезано из сцены с помощью детектора и текст занимает большую часть изображения)  
 Модель состоит из двух частей: ректификатора (преобразователя изображения, выпрямителя текста) и распознавателя текста на преобразованном изображении  
 ![plot](./images/im1.PNG)
