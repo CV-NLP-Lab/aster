@@ -50,4 +50,4 @@ def create_cute80(output_path):
   print('{} examples created'.format(count))
 
 if __name__ == '__main__':
-  create_cute80('data/cute80_test.tfrecord')
+  create_cute80('data/ic13_test_.tfrecord')

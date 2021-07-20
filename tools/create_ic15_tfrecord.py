@@ -34,7 +34,7 @@ def char_check(word):
 def create_ic15(output_path):
   writer = tf.python_io.TFRecordWriter(output_path)
 
-  groundtruth_file_path = os.path.join(FLAGS.data_dir, 'test_groundtruth_all.txt')
+  groundtruth_file_path = os.path.join(FLAGS.data_dir, 'test_groundtruth_1811.txt')
   
   count = 0
   with open(groundtruth_file_path, 'r') as f:

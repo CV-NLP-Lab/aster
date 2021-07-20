@@ -79,34 +79,33 @@ class SynthTextCreator(object):
       char_polygons = np.transpose(groundtruth['charBB'][0, index], axes=[2,1,0])
       self._create_samples_of_an_image(image_rel_path, text, word_polygons, char_polygons)
 
-  def _create_samples_of_an_image(image_rel_path, words, word_polygons, char_polygons):
-    """
-    Args:
-      image_rel_path: Python string. Image relative path.
-      words: string array of shape [num_words]. Groundtruth words.
-      word_polygons: array of shape [num_words, ]. Groundtruth word polygons
-      
-    """
+def _create_samples_of_an_image(image_rel_path, words, word_polygons, char_polygons):
+  """
+  Args:
+    image_rel_path: Python string. Image relative path.
+    words: string array of shape [num_words]. Groundtruth words.
+    word_polygons: array of shape [num_words, ]. Groundtruth word polygons
+    
+  """
 
 
-    image_path = os.path.join(self._data_dir, image_rel_path)
-    im = Image.open(image_path)
-    im_width, im_height = im.size
-
-    bbox_xymin = np.min(word_polygons, axis=1)
-    bbox_xymax = np.max(word_polygons, axis=1)
-    bbox_wh = bbox_xymax - bbox_xymin
-    bbox_margin = np.expand_dims(
-      margin_ratio * np.sqrt(bbox_wh[:,0] * bbox_wh[:,1]),
-      axis=1)
-    enlarged_bbox_xymin = np.maximum(
-      bbox_xymin - bbox_margin,
-      np.asarray([[0, 0]], dtype=np.float32))
-    enlarged_bbox_xymax = np.minimum(
-      bbox_xymax + bbox_margin,
-      np.asarray([[im_width-1, im_height-1]], dtype=np.float32))
-    bbox_array = np.concatenate([enlarged_bbox_xymin, enlarged_bbox_xymax], axis=1)
-    bbox_array = np.round(bbox_array)
+  image_path = os.path.join(self._data_dir, image_rel_path)
+  im = Image.open(image_path)
+  im_width, im_height = im.size
+  bbox_xymin = np.min(word_polygons, axis=1)
+  bbox_xymax = np.max(word_polygons, axis=1)
+  bbox_wh = bbox_xymax - bbox_xymin
+  bbox_margin = np.expand_dims(
+    margin_ratio * np.sqrt(bbox_wh[:,0] * bbox_wh[:,1]),
+    axis=1)
+  enlarged_bbox_xymin = np.maximum(
+    bbox_xymin - bbox_margin,
+    np.asarray([[0, 0]], dtype=np.float32))
+  enlarged_bbox_xymax = np.minimum(
+    bbox_xymax + bbox_margin,
+    np.asarray([[im_width-1, im_height-1]], dtype=np.float32))
+  bbox_array = np.concatenate([enlarged_bbox_xymin, enlarged_bbox_xymax], axis=1)
+  bbox_array = np.round(bbox_array)
 
 
 
@@ -147,7 +146,7 @@ def main(_):
     text = groundtruth['txt'][0, index]
     word_polygons = groundtruth['wordBB'][0, index]
     char_polygons = np.transpose(groundtruth['charBB'][0, index], axes=[2,1,0])
-    _create_samples_of_an_image(writer, image_rel_path, text, word_polygons, char_polygons)
+    # _create_samples_of_an_image(writer, image_rel_path, text, word_polygons, char_polygons)
 
   for index in tqdm(indices):
     # try:
