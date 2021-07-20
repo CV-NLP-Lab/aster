@@ -1,0 +1,4 @@
+default config
+accuracy 0.83
+totaleditdistance 1064
+i guess no improvements after ~100k iter

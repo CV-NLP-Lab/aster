@@ -1,0 +1,25 @@
+svt(50) - no lexicon
+pretrained:
+cute 79.5
+ic13 92.8
+ic15 72.7 (!=)
+ic03(50)(860i) 98.3
+ic03(full) 96.9
+ic03 92.4
+svt(647i) 89.0
+svtp(645i) 78.4
+iit5k(50) 99.5
+iit5k(1k) 98.7
+iit5k 93.0
+initial:
+ic13 92.0
+ic15 71.1
+ic03(50) 98.0
+ic03 90.1
+ic03(full) 96.6
+svt(647i) 86.8
+cute 0.75
+svtp(645i) 75.6
+iit5k(50) 99.6
+iit5k(1k) 98.6
+iit5k 92.3
