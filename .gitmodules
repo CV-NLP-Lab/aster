@@ -1,3 +1,6 @@
 [submodule "aster.pytorch"]
 	path = aster.pytorch
 	url = https://github.com/CV-NLP-Lab/aster.pytorch
+[submodule "aster"]
+	path = aster
+	url = https://github.com/CV-NLP-Lab/aster.git
