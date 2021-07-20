@@ -4,12 +4,9 @@ import logging
 import tensorflow as tf
 
 from google.protobuf import text_format
-from aster import evaluator
 from aster.protos import eval_pb2
 from aster.protos import pipeline_pb2
 from aster.protos import input_reader_pb2
-from aster.builders import model_builder
-from aster.builders import input_reader_builder
 
 
 logging.getLogger('tensorflow').propagate = False # avoid logging duplicates
@@ -39,6 +36,9 @@ flags.DEFINE_string('model_config_path', '',
                     'Path to a model_pb2.DetectionModel config file.')
 FLAGS = flags.FLAGS
 
+from aster import evaluator
+from aster.builders import model_builder
+from aster.builders import input_reader_builder
 
 def get_configs_from_exp_dir():
   pipeline_config_path = os.path.join(FLAGS.exp_dir, 'config/trainval.prototxt')

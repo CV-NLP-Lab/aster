@@ -209,58 +209,30 @@ train_input_reader {
   }
 }
 
-# eval_config {
-#   metrics_set: "recognition_metrics"
-#   num_examples: 1015
-#   data_preprocessing_steps {
-#     resize_image {
-#       target_height: 64
-#       target_width: 256
-#     }
-#   }
-#   num_visualizations: 0
-#   visualization_export_dir: ""
-# }
-
+#eval_config {
+#  metrics_set: "recognition_metrics"
+#  num_examples: 857
+#  data_preprocessing_steps {
+#    resize_image {
+#      target_height: 64
+#      target_width: 256
+#    }
+#  }
+#  num_visualizations: 0
+#  visualization_export_dir: ""
+#}
 # eval_input_reader {
-#   num_epochs: 1
-#   num_readers: 1
-#   shuffle: false
-#   tf_record_input_reader {
-#     input_path: "data/ic13_test_.tfrecord"
-#   }
-# }
-
-eval_config {
-  metrics_set: "recognition_metrics"
-  num_examples: 860
-  data_preprocessing_steps {
-    resize_image {
-      target_height: 64
-      target_width: 256
-    }
-  }
-  # data_preprocessing_steps {
-  #   rgb_to_gray { three_channels: true }
-  # }
-  num_visualizations: 0
-  eval_with_lexicon: true
-  only_visualize_incorrect: true
-  visualization_export_dir: ""
-}
-
-eval_input_reader {
-  num_epochs: 1
-  num_readers: 1
-  shuffle: false
-  tf_record_input_reader {
-    input_path: "data/ic03_test_full.tfrecord"
-  }
-}
+#  num_epochs: 1
+#  num_readers: 1
+#  shuffle: false
+#  tf_record_input_reader {
+#    input_path: "data/ic13_test_.tfrecord"
+#  }
+#}
 
 # eval_config {
 #   metrics_set: "recognition_metrics"
-#   num_examples: 647
+#   num_examples: 860
 #   data_preprocessing_steps {
 #     resize_image {
 #       target_height: 64
@@ -271,18 +243,124 @@ eval_input_reader {
 #   #   rgb_to_gray { three_channels: true }
 #   # }
 #   num_visualizations: 0
-#   visualization_export_dir: ""
 #   eval_with_lexicon: true
+#   #only_visualize_incorrect: true
+#   visualization_export_dir: ""
 # }
-
 # eval_input_reader {
 #   num_epochs: 1
 #   num_readers: 1
 #   shuffle: false
 #   tf_record_input_reader {
-#     input_path: "data/svt_test.tfrecord"
+#     input_path: "data/ic03_test_full.tfrecord"
 #   }
 # }
+# 
+
+# eval_config {
+#   metrics_set: "recognition_metrics"
+#   num_examples: 860
+#   data_preprocessing_steps {
+#     resize_image {
+#       target_height: 64
+#       target_width: 256
+#     }
+#   }
+#   # data_preprocessing_steps {
+#   #   rgb_to_gray { three_channels: true }
+#   # }
+#   num_visualizations: 0
+#   #only_visualize_incorrect: true
+#   visualization_export_dir: ""
+# }
+# eval_input_reader {
+#   num_epochs: 1
+#   num_readers: 1
+#   shuffle: false
+#   tf_record_input_reader {
+#     input_path: "data/ic03_test_full.tfrecord"
+#   }
+# }
+ 
+ eval_config {
+   metrics_set: "recognition_metrics"
+   num_examples: 860
+   data_preprocessing_steps {
+     resize_image {
+       target_height: 64
+       target_width: 256
+     }
+   }
+   # data_preprocessing_steps {
+   #   rgb_to_gray { three_channels: true }
+   # }
+   num_visualizations: 0
+   eval_with_lexicon: true
+   #only_visualize_incorrect: true
+   visualization_export_dir: ""
+ }
+ eval_input_reader {
+   num_epochs: 1
+   num_readers: 1
+   shuffle: false
+   tf_record_input_reader {
+     input_path: "data/ic03_test_fulllex.tfrecord"
+   }
+ }
+ 
+
+
+#eval_config {
+#  metrics_set: "recognition_metrics"
+#  num_examples: 1811
+#  data_preprocessing_steps {
+#    resize_image {
+#      target_height: 64
+#      target_width: 256
+#    }
+#  }
+#  # data_preprocessing_steps {
+#  #   rgb_to_gray { three_channels: true }
+#  # }
+#  num_visualizations: 0
+#  #eval_with_lexicon: true
+#  #only_visualize_incorrect: true
+#  visualization_export_dir: ""
+#}
+#eval_input_reader {
+#  num_epochs: 1
+#  num_readers: 1
+#  shuffle: false
+#  tf_record_input_reader {
+#    input_path: "data/ic15_test_full.tfrecord"
+#  }
+#}
+
+#eval_config {
+#  metrics_set: "recognition_metrics"
+#  num_examples: 647
+#  data_preprocessing_steps {
+#    resize_image {
+#      target_height: 64
+#      target_width: 256
+#    }
+#  }
+#  # data_preprocessing_steps {
+#  #   rgb_to_gray { three_channels: true }
+#  # }
+#  num_visualizations: 0
+#  visualization_export_dir: ""
+#  #eval_with_lexicon: true
+#}
+
+# eval_input_reader {
+#  num_epochs: 1
+#  num_readers: 1
+#  shuffle: false
+#  tf_record_input_reader {
+#    input_path: "data/svt_test.tfrecord"
+#  }
+#}
 
 # eval_config {
 #   metrics_set: "recognition_metrics"
@@ -298,7 +376,7 @@ eval_input_reader {
 #   visualization_export_dir: ""
 #   eval_with_lexicon: true
 # }
-
+#
 # eval_input_reader {
 #   num_epochs: 1
 #   num_readers: 1
@@ -307,6 +385,55 @@ eval_input_reader {
 #     input_path: "data/iiit5k_test_1k.tfrecord"
 #   }
 # }
+
+# eval_config {
+#   metrics_set: "recognition_metrics"
+#   num_examples: 3000
+#   data_preprocessing_steps {
+#     resize_image {
+#       target_height: 64
+#       target_width: 256
+#     }
+#   }
+#   num_visualizations: 0
+#   only_visualize_incorrect: true
+#   visualization_export_dir: ""
+# }
+#
+# eval_input_reader {
+#   num_epochs: 1
+#   num_readers: 1
+#   shuffle: false
+#   tf_record_input_reader {
+#     input_path: "data/iiit5k_test_1k.tfrecord"
+#   }
+# }
+
+
+
+# eval_config {
+#   metrics_set: "recognition_metrics"
+#   num_examples: 3000
+#   data_preprocessing_steps {
+#     resize_image {
+#       target_height: 64
+#       target_width: 256
+#     }
+#   }
+#   num_visualizations: 0
+#   only_visualize_incorrect: true
+#   visualization_export_dir: ""
+#   eval_with_lexicon: true
+# }
+# eval_input_reader {
+#   num_epochs: 1
+#   num_readers: 1
+#   shuffle: false
+#   tf_record_input_reader {
+#     input_path: "data/iiit5k_test_50.tfrecord"
+#   }
+# }
+
 
 # eval_config {
 #   metrics_set: "recognition_metrics"
@@ -320,7 +447,7 @@ eval_input_reader {
 #   num_visualizations: 0
 #   visualization_export_dir: ""
 # }
-
+#
 # eval_input_reader {
 #   num_epochs: 1
 #   num_readers: 1
@@ -330,24 +457,24 @@ eval_input_reader {
 #   }
 # }
 
-# eval_config {
-#   metrics_set: "recognition_metrics"
-#   num_examples: 288
-#   data_preprocessing_steps {
-#     resize_image {
-#       target_height: 64
-#       target_width: 256
-#     }
-#   }
-#   num_visualizations: 0
-#   visualization_export_dir: ""
-# }
-
-# eval_input_reader {
-#   num_epochs: 1
-#   num_readers: 1
-#   shuffle: false
-#   tf_record_input_reader {
-#     input_path: "data/cute80_test.tfrecord"
-#   }
-# }
+#eval_config {
+#  metrics_set: "recognition_metrics"
+#  num_examples: 288
+#  data_preprocessing_steps {
+#    resize_image {
+#      target_height: 64
+#      target_width: 256
+#    }
+#  }
+#  num_visualizations: 0
+#  visualization_export_dir: ""
+#}
+#
+#eval_input_reader {
+#  num_epochs: 1
+#  num_readers: 1
+#  shuffle: false
+#  tf_record_input_reader {
+#    input_path: "data/cute80_test.tfrecord"
+#  }
+#}

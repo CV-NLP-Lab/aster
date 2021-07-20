@@ -53,9 +53,6 @@ from aster.protos import model_pb2
 from aster.protos import pipeline_pb2
 from aster.protos import train_pb2
 from aster.protos import input_reader_pb2
-from aster.builders import model_builder
-from aster.builders import input_reader_builder
-from aster import trainer
 
 logging.getLogger('tensorflow').propagate = False # avoid logging duplicates
 tf.logging.set_verbosity(tf.logging.INFO)
@@ -90,6 +87,9 @@ flags.DEFINE_string('model_config_path', '',
 
 FLAGS = flags.FLAGS
 
+from aster.builders import model_builder
+from aster.builders import input_reader_builder
+from aster import trainer
 
 def get_configs_from_exp_dir():
   pipeline_config_path = os.path.join(FLAGS.exp_dir, 'config/trainval.prototxt')

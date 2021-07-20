@@ -235,8 +235,10 @@ def train(create_tensor_dict_fn_list, create_model_fn, train_config, master, tas
     summary_op = tf.summary.merge(list(summaries), name='summary_op')
 
     # Soft placement allows placing on CPU ops without GPU implementation.
+    gpu_limit = tf.GPUOptions(per_process_gpu_memory_fraction=0.4)
     session_config = tf.ConfigProto(allow_soft_placement=True,
-                                    log_device_placement=False)
+                                    log_device_placement=False,
+                                    gpu_options=gpu_limit)
 
     # Save checkpoints regularly.
     keep_checkpoint_every_n_hours = train_config.keep_checkpoint_every_n_hours
