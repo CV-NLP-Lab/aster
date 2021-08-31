@@ -3,6 +3,7 @@ import os
 import io
 import random
 from PIL import Image
+import string
 
 
 import tensorflow as tf
@@ -18,6 +19,7 @@ flags.DEFINE_string('data_dir', '', 'Root directory to raw SynthText dataset.')
 flags.DEFINE_integer('start_index', 0, 'Start image index.')
 flags.DEFINE_integer('num_images', -1, 'Number of images to create. Default is all remaining.')
 flags.DEFINE_integer('shuffle', 0, 'Shuffle images.')
+flags.DEFINE_integer('mixed_case', 0, 'mixed case or not (exclude pics with punctuation and .lower() to all)')
 flags.DEFINE_string('output_path', 'data/andrey_train.tfrecord', 'Path to output TFRecord.')
 FLAGS = flags.FLAGS
 
@@ -79,7 +81,7 @@ def main(_):
       except Exception as e:
 #        print(e)
         valid = False
-      
+
       if not valid:
         logging.warn('Skip invalid image {}'.format(image_path))
         skipped += 1
@@ -87,6 +89,12 @@ def main(_):
 
       # extract groundtruth
       groundtruth_text = image_rel_path.split('_')[0]
+
+      if (FLAGS.mixed_case and
+          len(list(filter(lambda x: x not in string.ascii_lowercase, groundtruth_text.lower()))) != 0):
+          print('skipped {}'.format(groundtruth_text))
+          skipped += 1
+          continue
 
       # write example
       example = tf.train.Example(features=tf.train.Features(feature={
